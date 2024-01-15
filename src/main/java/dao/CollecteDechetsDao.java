@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,5 +47,44 @@ public class CollecteDechetsDao {
         }
 
         return collecteDechets;
+    }
+    
+    private static final String INSERT_COLLECTE = "INSERT INTO collecte_dechets (latitude, longitude, heurePrevue, status) VALUES (?, ?, ?, ?)";
+    private static final String DELETE_COLLECTE = "DELETE FROM collecte_dechets WHERE id = ?";
+
+    public void addCollecteDechets(CollecteDechets collecte) {
+        try (Connection connection = ConnectionSingleton.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_COLLECTE, Statement.RETURN_GENERATED_KEYS)) {
+
+            preparedStatement.setString(1, collecte.getLatitude());
+            preparedStatement.setString(2, collecte.getLongitude());
+            preparedStatement.setTimestamp(3, collecte.getHeurePrevue());
+            preparedStatement.setString(4, collecte.getStatut());
+
+            preparedStatement.executeUpdate();
+
+            // Récupérez l'ID généré pour la collecte ajoutée
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    collecte.setId(generatedKeys.getInt(1));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCollecteDechets(int id) {
+        try (Connection connection = ConnectionSingleton.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COLLECTE)) {
+
+            preparedStatement.setInt(1, id);
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

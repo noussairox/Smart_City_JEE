@@ -9,6 +9,13 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+        <form-login-page>/auth.jsp</form-login-page>
+        <form-error-page>/login-error.jsp</form-error-page>
+    </form-login-config>
+</login-config>
   
   <servlet>
     <description></description>
@@ -29,5 +36,65 @@
   <servlet-mapping>
     <servlet-name>SuiviDechetsServlet</servlet-name>
     <url-pattern>/SuiviDechetsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletQualiteAir</display-name>
+    <servlet-name>ServletQualiteAir</servlet-name>
+    <servlet-class>controleur.ServletQualiteAir</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletQualiteAir</servlet-name>
+    <url-pattern>/ServletQualiteAir</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AjoutTerrainServlet</display-name>
+    <servlet-name>AjoutTerrainServlet</servlet-name>
+    <servlet-class>controleur.AjoutTerrainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjoutTerrainServlet</servlet-name>
+    <url-pattern>/AjoutTerrainServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VisualisationTerrainServlet</display-name>
+    <servlet-name>VisualisationTerrainServlet</servlet-name>
+    <servlet-class>controleur.VisualisationTerrainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VisualisationTerrainServlet</servlet-name>
+    <url-pattern>/VisualisationTerrainServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TerrainDetailsServlet</display-name>
+    <servlet-name>TerrainDetailsServlet</servlet-name>
+    <servlet-class>controleur.TerrainDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TerrainDetailsServlet</servlet-name>
+    <url-pattern>/TerrainDetailsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReservationTerrainServlet</display-name>
+    <servlet-name>ReservationTerrainServlet</servlet-name>
+    <servlet-class>controleur.ReservationTerrainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReservationTerrainServlet</servlet-name>
+    <url-pattern>/ReservationTerrainServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ImageServlet</display-name>
+    <servlet-name>ImageServlet</servlet-name>
+    <servlet-class>controleur.ImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageServlet</servlet-name>
+    <url-pattern>/ImageServlet</url-pattern>
   </servlet-mapping>
 </web-app>

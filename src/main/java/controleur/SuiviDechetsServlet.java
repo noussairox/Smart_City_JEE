@@ -14,7 +14,12 @@ import models.Adresse; // Ajoutez cet import
 
 @WebServlet("/SuiviDechets")
 public class SuiviDechetsServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CollecteDechetsDao collecteDechetsDao = new CollecteDechetsDao();
         List<CollecteDechets> collecteDechets = collecteDechetsDao.getAllCollecteDechets();
